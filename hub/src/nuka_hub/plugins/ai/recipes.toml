@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+[codex]
+method = "GET"
+url = "https://chatgpt.com/backend-api/wham/usage"
+headers = { Authorization = "Bearer $TOKEN$", Chatgpt-Account-Id = "{account_id}", User-Agent = "nuka-hub/0.1" }
+
+[claude]
+method = "GET"
+url = "https://api.anthropic.com/api/oauth/usage"
+headers = { Authorization = "Bearer $TOKEN$", anthropic-beta = "oauth-2025-04-20" }
+
+[antigravity]
+method = "POST"
+url = "https://daily-cloudcode-pa.googleapis.com/v1internal:retrieveUserQuotaSummary"
+headers = { Authorization = "Bearer $TOKEN$", Content-Type = "application/json" }
+body = '{"project":"{project_id}"}'

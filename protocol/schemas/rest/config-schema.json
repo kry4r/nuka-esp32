@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/config-schema.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "title": {"type": "string"},
+    "type": {"const": "object"},
+    "properties": {"type": "object"},
+    "$defs": {"type": "object"},
+    "additionalProperties": {"const": false}
+  },
+  "required": ["type", "properties"],
+  "additionalProperties": true
+}

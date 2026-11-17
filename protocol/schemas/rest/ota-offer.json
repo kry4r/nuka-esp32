@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/ota-offer.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "ver": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "app",
+        "assets"
+      ]
+    },
+    "dev_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9_-]{1,32}$",
+        "not": {
+          "pattern": "[^a-z0-9_-]"
+        }
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "ver",
+    "kind",
+    "dev_ids"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/provisioning.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/no_nul"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "ssid": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 32,
+      "format": "wifi-ssid"
+    },
+    "pass": {
+      "type": "string",
+      "maxLength": 63,
+      "format": "wifi-passphrase"
+    },
+    "hub": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 511,
+      "pattern": "^wss?://"
+    },
+    "cf_origin": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://[a-zA-Z0-9.-]+(?::[0-9]+)?$"
+    },
+    "cf_client_id": {
+      "type": "string"
+    },
+    "cf_client_secret": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "ssid",
+    "pass",
+    "hub"
+  ],
+  "additionalProperties": true,
+  "dependentRequired": {
+    "cf_origin": [
+      "cf_client_id",
+      "cf_client_secret"
+    ],
+    "cf_client_id": [
+      "cf_origin",
+      "cf_client_secret"
+    ],
+    "cf_client_secret": [
+      "cf_origin",
+      "cf_client_id"
+    ]
+  }
+}

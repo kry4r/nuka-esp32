@@ -1,0 +1,10 @@
+{
+  "v": 1,
+  "t": "err",
+  "ts": 1792224000,
+  "d": {
+    "code": "rate_limited",
+    "msg": "Example rate limit"
+  },
+  "id": 24
+}

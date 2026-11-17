@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+[Unit]
+Description=nuka Hub server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=nuka
+Group=nuka
+StateDirectory=nuka
+StateDirectoryMode=0700
+ConfigurationDirectory=nuka
+ConfigurationDirectoryMode=0700
+WorkingDirectory=/var/lib/nuka
+Environment=PATH=/opt/nuka/node/bin:/opt/nuka/venv/bin:/usr/bin:/bin
+Environment=XDG_DATA_HOME=/var/lib/nuka
+Environment=NUKA_CONFIG=/etc/nuka/config.toml
+Environment=PYTHON_KEYRING_BACKEND=keyring.backends.SecretService.Keyring
+LoadCredentialEncrypted=keyring-password:/etc/credstore.encrypted/nuka-keyring-password
+ExecStart=/usr/bin/dbus-run-session -- /opt/nuka/run-hub.sh
+Restart=on-failure
+RestartSec=5
+KillMode=control-group
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/nuka /etc/nuka
+
+[Install]
+WantedBy=multi-user.target

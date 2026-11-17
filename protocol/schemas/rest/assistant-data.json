@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/assistant-data.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]{1,32}$",
+      "not": {
+        "pattern": "[^a-z0-9_-]"
+      }
+    },
+    "utc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "tool_state": {
+      "enum": [
+        "requested",
+        "waiting_confirmation",
+        "running",
+        "completed",
+        "denied",
+        "cancelled",
+        "error"
+      ]
+    },
+    "message": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "assistant-data.json#/$defs/id"
+        },
+        "dev_id": {
+          "$ref": "assistant-data.json#/$defs/id"
+        },
+        "session_id": {
+          "$ref": "assistant-data.json#/$defs/id"
+        },
+        "role": {
+          "enum": [
+            "user",
+            "assistant",
+            "tool"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "created_at": {
+          "$ref": "assistant-data.json#/$defs/utc"
+        },
+        "tool_call_id": {
+          "$ref": "assistant-data.json#/$defs/id"
+        },
+        "tool_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tool_state": {
+          "$ref": "assistant-data.json#/$defs/tool_state"
+        },
+        "file_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "assistant-data.json#/$defs/id"
+          },
+          "maxItems": 8,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "dev_id",
+        "session_id",
+        "role",
+        "text",
+        "created_at"
+      ],
+      "additionalProperties": true
+    },
+    "memory": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "assistant-data.json#/$defs/id"
+        },
+        "dev_id": {
+          "$ref": "assistant-data.json#/$defs/id"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "source_message_id": {
+          "$ref": "assistant-data.json#/$defs/id"
+        },
+        "created_at": {
+          "$ref": "assistant-data.json#/$defs/utc"
+        },
+        "updated_at": {
+          "$ref": "assistant-data.json#/$defs/utc"
+        }
+      },
+      "required": [
+        "id",
+        "dev_id",
+        "text",
+        "created_at",
+        "updated_at"
+      ],
+      "additionalProperties": true
+    },
+    "file": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "assistant-data.json#/$defs/id"
+        },
+        "dev_id": {
+          "$ref": "assistant-data.json#/$defs/id"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$",
+          "not": {
+            "pattern": "[^a-f0-9]"
+          }
+        },
+        "created_at": {
+          "$ref": "assistant-data.json#/$defs/utc"
+        }
+      },
+      "required": [
+        "id",
+        "dev_id",
+        "name",
+        "size",
+        "sha256",
+        "created_at"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

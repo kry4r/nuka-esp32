@@ -1,0 +1,11 @@
+{
+  "v": 1,
+  "t": "pomo",
+  "ts": 1792224000,
+  "d": {
+    "phase": "focus",
+    "state": "running",
+    "ends_at": 1792225500,
+    "round": 2
+  }
+}

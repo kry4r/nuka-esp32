@@ -1,0 +1,59 @@
+# Personal deployment notes (never commit)
+local/
+
+# Firmware
+firmware/build/
+sdkconfig
+sdkconfig.old
+firmware/managed_components/
+# Copied from firmware/idf_component.yml by CMake
+firmware/main/idf_component.yml
+build/
+node_modules/
+*.bin.bak
+*.bin
+flash_backup*.bin
+factory-backup*.bin
+backups/
+
+# Compiler / linker and CMake outputs
+*.o
+*.obj
+*.a
+*.lib
+*.elf
+*.map
+*.exe
+*.dll
+*.so
+*.dylib
+*.pdb
+*.ilk
+*.exp
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+
+# Hub / Python
+.venv/
+.uv-cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+dist/
+*.egg-info/
+secrets.toml
+config.toml
+secrets.toml.*
+config.toml.bak.*
+
+# Vault backups
+*.nukavault
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

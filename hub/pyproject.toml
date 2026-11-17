@@ -1,0 +1,60 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nuka-hub"
+version = "0.1.0"
+description = "Cross-platform companion for nuka devices"
+requires-python = ">=3.11"
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "httpx",
+    "pydantic>=2",
+    "platformdirs",
+    "keyring",
+    "zeroconf",
+    "psutil",
+    "pyserial",
+    "websockets",
+    "tzdata",
+    "tzlocal",
+    "PyJWT[crypto]",
+    "jsonpath-ng>=1.7",
+    "prometheus-client",
+    "tomli-w>=1.2",
+    "tomlkit>=0.15.2",
+]
+
+[project.optional-dependencies]
+nvidia = ["nvidia-ml-py"]
+media-win = ["winrt-Windows.Media.Control; sys_platform == 'win32'", "winrt-Windows.Foundation; sys_platform == 'win32'", "winrt-Windows.Foundation.Collections; sys_platform == 'win32'", "winrt-Windows.Storage.Streams; sys_platform == 'win32'"]
+media-linux = ["dbus-next; sys_platform == 'linux'"]
+images = ["Pillow"]
+voice = ["sherpa-onnx>=2.0,<3", "numpy>=2.0,<3", "edge-tts>=7.3,<8", "mcp>=2.3,<3"]
+all = ["nuka-hub[nvidia,media-win,media-linux,images]"]
+
+[project.scripts]
+nuka = "nuka_hub.cli:main"
+nuka-hook = "nuka_hub.hook:main"
+
+[project.urls]
+Source = "https://github.com/<owner>/nuka-esp32"
+
+[dependency-groups]
+dev = ["pytest", "pytest-asyncio", "respx", "ruff", "pip-audit", "jsonschema", "referencing", "rfc3339-validator", "rfc3986-validator"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

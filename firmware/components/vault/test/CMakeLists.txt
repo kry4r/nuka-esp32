@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+cmake_minimum_required(VERSION 3.22)
+project(nuka_vault_t7 C)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+get_filename_component(NUKA_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../../.." ABSOLUTE)
+set(IDF_SOURCE "${NUKA_ROOT}/build/esp-idf" CACHE PATH "ESP-IDF source checkout")
+set(ENABLE_PROGRAMS OFF CACHE BOOL "" FORCE)
+set(ENABLE_TESTING OFF CACHE BOOL "" FORCE)
+add_subdirectory("${IDF_SOURCE}/components/mbedtls/mbedtls" mbedtls EXCLUDE_FROM_ALL)
+add_executable(nuka_vault_t7 test_t7.c ../vault_crypto.c ../vault_json.c
+               "${IDF_SOURCE}/components/unity/unity/src/unity.c")
+target_include_directories(nuka_vault_t7 PRIVATE .. "${IDF_SOURCE}/components/unity/unity/src")
+target_link_libraries(nuka_vault_t7 PRIVATE mbedcrypto)
+target_compile_options(nuka_vault_t7 PRIVATE -Wall -Wextra -Werror)
+enable_testing()
+add_test(NAME T7 COMMAND nuka_vault_t7)

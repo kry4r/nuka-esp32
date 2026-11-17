@@ -1,0 +1,8 @@
+{
+  "name": "example",
+  "type": "cpamp",
+  "health": "ok",
+  "last_ok": "2026-10-17T08:00:00Z",
+  "next_try": "2026-10-17T08:00:00Z",
+  "detail": "Example provider"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/notifications.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "resources.json#/$defs/notification"
+      }
+    }
+  },
+  "required": [
+    "items"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,1 @@
+{"t":"ok","d":{"fw":"0.1.0","up_s":3600,"heap_int":143360,"heap_int_min":98304,"psram_free":4194304,"tasks":[{"name":"lvgl","free_b":2048}],"rssi":-58,"reset_reason":"power_on"},"id":9}

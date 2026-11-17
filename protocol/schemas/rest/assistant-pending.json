@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/assistant-pending.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "$ref": "assistant-data.json#/$defs/id"
+    },
+    "status": {
+      "const": "pending_confirmation"
+    }
+  },
+  "required": [
+    "request_id",
+    "status"
+  ],
+  "additionalProperties": true
+}

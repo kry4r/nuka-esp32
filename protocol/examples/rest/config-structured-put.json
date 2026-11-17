@@ -1,0 +1,7 @@
+{
+  "config": {
+    "hub": {"name": "hub-example", "port": 8790},
+    "assistant": {"enabled": false}
+  },
+  "mtime": "2026-10-24T08:00:00Z"
+}

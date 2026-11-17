@@ -1,0 +1,1 @@
+{"t":"vault.import.otpauth","d":{"uris":["otpauth://totp/Example:demo?secret=MFRGGZA&issuer=Example&digits=6&period=30"]},"id":8}

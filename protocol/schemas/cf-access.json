@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/cf-access.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "origin": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://[a-zA-Z0-9.-]+(?::[0-9]+)?$"
+    },
+    "client_id": {
+      "type": "string"
+    },
+    "client_secret": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "origin",
+    "client_id",
+    "client_secret"
+  ],
+  "additionalProperties": true
+}

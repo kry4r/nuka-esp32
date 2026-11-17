@@ -1,0 +1,9 @@
+{
+  "event": "tool",
+  "data": {
+    "tool_call_id": "tc_example",
+    "name": "memory.write",
+    "state": "waiting_confirmation",
+    "text": "等待设备确认保存记忆。"
+  }
+}

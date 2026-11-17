@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/agents.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "sessions": {
+      "type": "array",
+      "items": {
+        "$ref": "resources.json#/$defs/agent_session"
+      }
+    },
+    "pending": {
+      "type": "array",
+      "items": {
+        "$ref": "resources.json#/$defs/perm_request"
+      }
+    }
+  },
+  "required": [
+    "sessions",
+    "pending"
+  ],
+  "additionalProperties": true
+}

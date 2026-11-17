@@ -1,0 +1,8 @@
+{
+  "title": "Example notification",
+  "body": "Example body",
+  "level": "info",
+  "source": "example",
+  "dedupe_key": "example",
+  "ttl_s": 86400
+}

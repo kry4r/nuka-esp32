@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+.venv/
+.pytest_cache/
+.ruff_cache/
+**/__pycache__/
+**/*.py[cod]
+build/
+dist/
+*.egg-info/
+config.toml
+secrets.toml
+**/secrets.toml
+*.sqlite3*
+**/*.sqlite3*
+*.nukavault
+**/*.nukavault

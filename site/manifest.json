@@ -1,0 +1,16 @@
+{
+  "name": "nuka-esp32",
+  "version": "0.1.0",
+  "new_install_prompt_erase": false,
+  "new_install_improv_wait_time": 0,
+  "builds": [{
+    "chipFamily": "ESP32-S3",
+    "parts": [
+      {"path": "https://github.com/<owner>/nuka-esp32/releases/download/v0.1.0/bootloader.bin", "offset": 0},
+      {"path": "https://github.com/<owner>/nuka-esp32/releases/download/v0.1.0/partition-table.bin", "offset": 32768},
+      {"path": "https://github.com/<owner>/nuka-esp32/releases/download/v0.1.0/ota_data_initial.bin", "offset": 61440},
+      {"path": "https://github.com/<owner>/nuka-esp32/releases/download/v0.1.0/nuka-esp32.bin", "offset": 196608},
+      {"path": "https://github.com/<owner>/nuka-esp32/releases/download/v0.1.0/nukapack.bin", "offset": 8585216}
+    ]
+  }]
+}

@@ -1,0 +1,47 @@
+{
+  "v": 1,
+  "t": "vm.hosts",
+  "ts": 1792224000,
+  "d": {
+    "rev": 120,
+    "items": [
+      {
+        "id": "h_example",
+        "name": "host-example",
+        "online": true,
+        "os": "windows",
+        "cpu": {
+          "pct": 23.5,
+          "temp_c": 54,
+          "freq_mhz": 4700
+        },
+        "gpu": {
+          "name": "Example GPU",
+          "pct": 12.0,
+          "temp_c": 41,
+          "mem_pct": 30.2,
+          "power_w": 45
+        },
+        "mem": {
+          "pct": 61.2,
+          "txt": "19.1 / 31.0 GB"
+        },
+        "net": {
+          "up_txt": "1.2 MB/s",
+          "down_txt": "8.4 MB/s"
+        },
+        "disks": [
+          {
+            "label": "C:",
+            "pct": 72.0
+          }
+        ],
+        "bat": {
+          "pct": 90.0,
+          "chg": true
+        }
+      }
+    ],
+    "more": 2
+  }
+}

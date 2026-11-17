@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/vault-backup.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "ver": {
+      "const": 1
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "vault-backup.json#/$defs/totp"
+          },
+          {
+            "$ref": "vault-backup.json#/$defs/password"
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "ver",
+    "entries"
+  ],
+  "additionalProperties": true,
+  "$defs": {
+    "totp": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "totp"
+        },
+        "name": {
+          "type": "string"
+        },
+        "secret_b32": {
+          "type": "string",
+          "pattern": "^[A-Z2-7]+={0,6}$"
+        },
+        "digits": {
+          "enum": [
+            6,
+            8
+          ]
+        },
+        "period": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "algo": {
+          "enum": [
+            "SHA1",
+            "SHA256",
+            "SHA512"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "name",
+        "secret_b32",
+        "digits",
+        "period",
+        "algo"
+      ],
+      "additionalProperties": true
+    },
+    "password": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "pass"
+        },
+        "name": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "pass": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "name",
+        "user",
+        "pass",
+        "url"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

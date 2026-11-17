@@ -1,0 +1,14 @@
+{
+  "v": 1,
+  "t": "notify.push",
+  "ts": 1792224000,
+  "d": {
+    "nid": "n_example",
+    "level": "warn",
+    "src": "alerts",
+    "title": "server-example 磁盘 91%",
+    "body": "Example notification",
+    "ts": 1792223000,
+    "wake": false
+  }
+}

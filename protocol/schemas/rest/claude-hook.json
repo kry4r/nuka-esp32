@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/claude-hook.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string"
+    },
+    "cwd": {
+      "type": "string"
+    },
+    "hook_event_name": {
+      "enum": [
+        "SessionStart",
+        "UserPromptSubmit",
+        "PreToolUse",
+        "PostToolUse",
+        "PermissionRequest",
+        "Notification",
+        "Stop",
+        "StopFailure",
+        "SessionEnd"
+      ]
+    },
+    "tool_name": {
+      "type": "string"
+    },
+    "tool_input": {
+      "type": "object"
+    },
+    "message": {
+      "type": "string"
+    },
+    "last_assistant_message": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "session_id",
+    "hook_event_name"
+  ],
+  "additionalProperties": true
+}

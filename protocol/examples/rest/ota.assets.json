@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "ver": "0.2.0",
+      "kind": "assets",
+      "file": "nuka-assets-0.2.0.bin",
+      "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+      "size": 3145728,
+      "notes_txt": "Example resource package"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "event": "error",
+  "data": {
+    "code": "upstream_error",
+    "message": "模型服务不可用。"
+  }
+}

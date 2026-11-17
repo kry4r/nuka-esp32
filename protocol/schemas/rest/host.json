@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/host.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "$ref": "resources.json#/$defs/host"
+}

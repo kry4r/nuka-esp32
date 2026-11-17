@@ -1,0 +1,1 @@
+{"servers":[{"name":"web1","alias":"web-1","online4":true,"online6":false,"cpu":12.3,"memory_used":1048576,"memory_total":2097152,"hdd_used":10240,"hdd_total":20480,"network_rx":2048,"network_tx":1024,"load_1":0.4,"load_5":0.3,"load_15":0.2,"uptime":"01:00:00"}]}

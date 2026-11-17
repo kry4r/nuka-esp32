@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "nuka-flash-site",
+  "version": "0.1.0",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "vendor": "node vendor.mjs"
+  },
+  "dependencies": {
+    "esp-web-tools": "10.4.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

@@ -1,0 +1,15 @@
+@lit-labs/ssr-dom-shim 1.6.0: BSD-3-Clause
+@lit/context 1.1.6: BSD-3-Clause
+@lit/reactive-element 2.1.2: BSD-3-Clause
+@material/web 2.5.0: Apache-2.0
+@types/trusted-types 2.0.7: MIT
+atob-lite 2.0.0: MIT
+esbuild 0.28.2: MIT
+esp-web-tools 10.4.0: Apache-2.0
+esptool-js 0.6.1: Apache-2.0
+improv-wifi-serial-sdk 2.8.0: Apache-2.0
+lit 3.3.3: BSD-3-Clause
+lit-element 4.2.2: BSD-3-Clause
+lit-html 3.3.3: BSD-3-Clause
+pako 2.2.0: (MIT AND Zlib)
+tslib 2.8.1: 0BSD

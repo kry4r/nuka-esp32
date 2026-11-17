@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: protocol
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --project scripts --locked
+      - run: python scripts/check_no_personal.py
+      - run: python scripts/check_license.py
+      - run: uv run --project scripts python scripts/check_protocol.py
+      - run: python firmware/tools/gen_theme.py --check
+      - run: python firmware/tools/gen_strings.py --check

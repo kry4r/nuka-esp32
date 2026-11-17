@@ -1,0 +1,49 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: hub
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install Pi runtime (T3)
+        working-directory: hub/src/nuka_hub/assistant/pi
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Shared contract tools (T6)
+        run: uv sync --project scripts --locked
+      - run: uv run --project scripts python scripts/check_protocol.py
+      - run: python scripts/check_no_personal.py
+      - run: python scripts/check_license.py
+      - id: detect
+        shell: bash
+        run: |
+          if [[ -f hub/pyproject.toml ]]; then
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+            echo 'HUB-01 pending: Python project has not been created.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Install nuka-hub
+        if: steps.detect.outputs.ready == 'true'
+        run: uv sync --project hub --all-extras --locked
+      - name: Import and T1–T6 / T9
+        if: steps.detect.outputs.ready == 'true'
+        working-directory: hub
+        run: |
+          uv run python -c "import nuka_hub"
+          uv run pytest

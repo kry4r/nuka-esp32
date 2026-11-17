@@ -1,0 +1,8 @@
+{
+  "ver": "0.2.0",
+  "kind": "app",
+  "file": "nuka-esp32-0.2.0.bin",
+  "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "size": 1843200,
+  "notes_txt": "Example release"
+}

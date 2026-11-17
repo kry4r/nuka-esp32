@@ -1,0 +1,7 @@
+{
+  "event": "done",
+  "data": {
+    "session_id": "s_example",
+    "cancelled": false
+  }
+}

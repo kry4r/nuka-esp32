@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+[hub]
+name = "nuka-hub"
+host = "127.0.0.1"
+port = 8790
+data_dir = "/var/lib/nuka"
+public_url = "https://nuka.example.com"
+
+[mdns]
+enabled = false
+
+[collectors]
+enabled = []
+
+[media]
+enabled = false
+
+[agents]
+enabled_sources = []
+
+[security]
+remote_admin = false
+
+[security.cf_access]
+enabled = false
+team_domain = ""
+aud = ""
+
+[assistant]
+enabled = false
+
+[assistant.history]
+enabled = true
+context_turns = 20

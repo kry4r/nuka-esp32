@@ -1,0 +1,10 @@
+{
+  "sid": "c_example",
+  "source": "claude",
+  "host": "host-example",
+  "project": "example-project",
+  "state": "tool",
+  "tool": "Bash",
+  "since": "2026-10-17T08:00:00Z",
+  "last_message": "Example message"
+}

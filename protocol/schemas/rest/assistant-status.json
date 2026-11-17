@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/assistant-status.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean"
+    },
+    "history_enabled": {
+      "type": "boolean"
+    },
+    "memory_enabled": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "enabled",
+    "history_enabled",
+    "memory_enabled"
+  ],
+  "additionalProperties": true
+}

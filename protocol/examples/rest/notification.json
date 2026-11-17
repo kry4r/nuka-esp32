@@ -1,0 +1,15 @@
+{
+  "nid": "n_example",
+  "source": "alerts",
+  "level": "warn",
+  "title": "Example alert",
+  "body": "Example body",
+  "ts": "2026-10-17T08:00:00Z",
+  "dedupe_key": "example-alert",
+  "actions": [
+    {
+      "kind": "dismiss"
+    }
+  ],
+  "ttl_s": 86400
+}

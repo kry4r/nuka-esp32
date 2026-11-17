@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/wmo-icon-map.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "0": {
+      "const": "clear_day"
+    },
+    "1": {
+      "const": "clear_day"
+    },
+    "2": {
+      "const": "partly_cloudy"
+    },
+    "3": {
+      "const": "cloudy"
+    },
+    "45": {
+      "const": "fog"
+    },
+    "48": {
+      "const": "fog"
+    },
+    "51": {
+      "const": "drizzle"
+    },
+    "53": {
+      "const": "drizzle"
+    },
+    "55": {
+      "const": "drizzle"
+    },
+    "56": {
+      "const": "sleet"
+    },
+    "57": {
+      "const": "sleet"
+    },
+    "61": {
+      "const": "rain"
+    },
+    "63": {
+      "const": "rain"
+    },
+    "65": {
+      "const": "heavy_rain"
+    },
+    "66": {
+      "const": "sleet"
+    },
+    "67": {
+      "const": "sleet"
+    },
+    "71": {
+      "const": "snow"
+    },
+    "73": {
+      "const": "snow"
+    },
+    "75": {
+      "const": "snow"
+    },
+    "77": {
+      "const": "snow"
+    },
+    "80": {
+      "const": "rain"
+    },
+    "81": {
+      "const": "rain"
+    },
+    "82": {
+      "const": "heavy_rain"
+    },
+    "85": {
+      "const": "snow"
+    },
+    "86": {
+      "const": "snow"
+    },
+    "95": {
+      "const": "thunder"
+    },
+    "96": {
+      "const": "thunder"
+    },
+    "99": {
+      "const": "thunder"
+    }
+  },
+  "required": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "45",
+    "48",
+    "51",
+    "53",
+    "55",
+    "56",
+    "57",
+    "61",
+    "63",
+    "65",
+    "66",
+    "67",
+    "71",
+    "73",
+    "75",
+    "77",
+    "80",
+    "81",
+    "82",
+    "85",
+    "86",
+    "95",
+    "96",
+    "99"
+  ],
+  "additionalProperties": false
+}

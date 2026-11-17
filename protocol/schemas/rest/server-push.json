@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/server-push.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "maxLength": 120
+    },
+    "body": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "level": {
+      "enum": [
+        "info",
+        "warn",
+        "critical"
+      ],
+      "default": "info"
+    },
+    "server": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "dedupe_key": {
+      "type": "string"
+    },
+    "ttl_s": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 86400
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "additionalProperties": true
+}

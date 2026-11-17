@@ -1,0 +1,46 @@
+{
+  "snapshots": {
+    "items": [
+      {
+        "row_key": "example-row",
+        "windows": [
+          {
+            "window_kind": "five_hour",
+            "provider_window_id": "primary",
+            "used_percent": 42.5,
+            "observed_at_ms": 1792224000000,
+            "cycle_end_ms": 1792231200000
+          }
+        ]
+      }
+    ]
+  },
+  "headers": {
+    "items": []
+  },
+  "usage": {
+    "total_requests": 1,
+    "total_tokens": 100,
+    "success_count": 1,
+    "failure_count": 0,
+    "apis": {
+      "POST /v1/example": {
+        "models": {
+          "example-model": {
+            "details": [
+              {
+                "timestamp": "2026-10-17T08:00:00Z",
+                "failed": false,
+                "tokens": {
+                  "input_tokens": 60,
+                  "output_tokens": 40,
+                  "total_tokens": 100
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

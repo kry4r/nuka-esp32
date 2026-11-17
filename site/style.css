@@ -1,0 +1,14 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+:root { color-scheme: dark; --bg: #000000; --surface: #10140c; --text: #eef3e2; --muted: #8c9878; --accent: #a4c93c; font: 16px/1.7 system-ui, sans-serif; }
+body { margin: 0; color: var(--text); background: var(--bg); }
+main { max-width: 800px; margin: 0 auto; padding: 64px 24px; }
+h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.25; }
+h1 span { color: var(--muted); font-size: .7em; }
+h2 { font-size: 1.25rem; margin-top: 0; }
+.eyebrow, a { color: var(--accent); }
+section { background: var(--surface); border: 1px solid #2a341c; padding: 28px; border-radius: 20px; margin: 24px 0; }
+pre { overflow-x: auto; padding: 16px; border-radius: 12px; background: var(--bg); line-height: 1.5; }
+button { background: var(--accent); color: #10140c; border: 0; border-radius: 12px; padding: 16px 24px; font: inherit; cursor: pointer; }
+input { accent-color: var(--accent); width: 20px; height: 20px; vertical-align: middle; }
+footer { color: var(--muted); font-size: .875rem; }
+[hidden] { display: none !important; }

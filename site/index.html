@@ -1,0 +1,46 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nuka-esp32 · 安装 / Install</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<main>
+  <p class="eyebrow">NUKA · ESP32-S3</p>
+  <h1>安装 nuka-esp32<br><span>Install your device system</span></h1>
+  <p>适用于 Waveshare ESP32-S3-Touch-AMOLED-2.16。使用桌面版 Chrome 或 Edge，通过 USB 数据线连接。<br>Use desktop Chrome or Edge with a USB data cable.</p>
+  <section>
+    <h2>1 · 完整备份 / Back up first</h2>
+    <p>首次刷入前，先退出所有串口工具，用 esptool 读取完整 16 MiB 原厂 Flash，并确认文件大小。备份留在本机。<br>Close serial tools, read all 16 MiB, and verify the backup file size. Keep the backup locally.</p>
+    <pre>uvx --from esptool==4.11.0 esptool.py --chip esp32s3 --port &lt;PORT&gt; read_flash 0 0x1000000 factory-16m.bin</pre>
+    <p>若设备当前使用 NukaVault，也请先导出加密备份。进入下载模式：按住 BOOT，重启，再松开 BOOT。<br>Export your encrypted NukaVault backup first. To enter download mode, hold BOOT, reset, then release BOOT.</p>
+    <label><input id="backed-up" type="checkbox"> 我已完成并检查 16 MiB 备份 / I have verified my full backup.</label>
+    <p><a href="https://github.com/&lt;owner&gt;/nuka-esp32/blob/main/docs/guides/01-flash-firmware.zh-CN.md">完整操作指南 / Full instructions</a></p>
+  </section>
+  <section>
+    <h2>2 · 刷入 / Install</h2>
+    <p>仅写入固件与资源对应区域，保留 NVS 和 Vault 分区。首次安装写入资源 bank 0；后续更新请使用 OTA。<br>The installer writes firmware and assets while preserving NVS and Vault partitions. First install uses assets bank 0; use OTA for later updates.</p>
+    <div id="installer" hidden>
+      <esp-web-install-button manifest="manifest.json">
+        <button slot="activate">连接并安装 / Connect &amp; install</button>
+        <p slot="unsupported">请使用支持 Web Serial 的桌面版 Chrome 或 Edge。 / Use desktop Chrome or Edge.</p>
+        <p slot="not-allowed">请通过 HTTPS 或 localhost 打开。 / Open this page via HTTPS or localhost.</p>
+      </esp-web-install-button>
+    </div>
+    <p id="backup-required">确认备份后可连接设备。 / Confirm your backup to enable installation.</p>
+  </section>
+  <section>
+    <h2>3 · 配网与配对 / Connect &amp; pair</h2>
+    <p>刷入成功后，关闭刷机窗口以释放串口，运行以下命令，在本机交互输入 Wi-Fi 凭据，并核对设备上的配对码。<br>Close the flasher to release the port, then enter Wi-Fi credentials locally and confirm the pairing code on the device.</p>
+    <pre>nuka init
+nuka hub
+# 在另一个终端 / In another terminal:
+nuka pair</pre>
+    <p>也可使用设备的 SoftAP 配网页。 / The device also supports SoftAP provisioning.</p>
+    <a href="https://github.com/&lt;owner&gt;/nuka-esp32/blob/main/docs/guides/03-pair-device.zh-CN.md">配对指南 / Pairing guide</a>
+  </section>
+  <footer>AGPL-3.0-or-later · <a href="https://github.com/&lt;owner&gt;/nuka-esp32">源代码 / Source</a> · <a href="vendor/DEPENDENCIES.txt">Third-party notices</a></footer>
+</main>
+<script type="module" src="app.js"></script>
+</html>

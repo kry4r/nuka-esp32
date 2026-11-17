@@ -1,0 +1,11 @@
+{
+  "v": 1,
+  "t": "ota.result",
+  "ts": 1792224000,
+  "d": {
+    "ver": "0.2.0",
+    "kind": "app",
+    "ok": false,
+    "reason": "sha_mismatch"
+  }
+}

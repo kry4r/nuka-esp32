@@ -1,0 +1,47 @@
+{
+  "summary": {
+    "requests": 1234,
+    "tokens": 3200000,
+    "failures": 15
+  },
+  "accounts": [
+    {
+      "id": "a_example",
+      "provider_kind": "codex",
+      "label": "a***@example.com",
+      "plan": "plus",
+      "status": "cooldown",
+      "recover_at": "2026-10-17T08:00:00Z",
+      "windows": [
+        {
+          "kind": "other",
+          "label": "Example Window",
+          "used_pct": 42.0,
+          "reset_at": "2026-10-17T08:00:00Z",
+          "source": "snapshot",
+          "observed_at": "2026-10-17T08:00:00Z",
+          "stale": false
+        }
+      ],
+      "credits": {
+        "balance": 5.0,
+        "currency": "USD"
+      },
+      "today": {
+        "requests": 1234,
+        "tokens": 3200000,
+        "failures": 15
+      }
+    }
+  ],
+  "providers": [
+    {
+      "name": "example",
+      "type": "cpamp",
+      "health": "ok",
+      "last_ok": "2026-10-17T08:00:00Z",
+      "next_try": "2026-10-17T08:00:00Z",
+      "detail": "Example provider"
+    }
+  ]
+}

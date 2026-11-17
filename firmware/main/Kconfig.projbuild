@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+menu "nuka diagnostics"
+config NUKA_AUDIO_SPIKE
+    bool "Run the FW2-05 hardware diagnostic once after boot"
+    default n
+    help
+        Keep disabled in normal firmware. Start only with the operator ready.
+config NUKA_AUDIO_SPIKE_STAGE
+    int "Diagnostic stage (1=tone, 2=microphone, 3=PCM, 4=PCM/Opus comparison)"
+    depends on NUKA_AUDIO_SPIKE
+    range 1 4
+    default 1
+    help
+        Stage 1 only plays one short, quiet synthesized tone. Stage 2 records
+        channel statistics without storing audio. Stages 3 and 4 record five
+        seconds in volatile PSRAM and play them back. Logs never contain audio.
+endmenu

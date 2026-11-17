@@ -1,0 +1,9 @@
+{
+  "title": "Example alert",
+  "body": "/ is 91%",
+  "level": "warn",
+  "server": "server-example",
+  "source": "cron",
+  "dedupe_key": "example-disk",
+  "ttl_s": 86400
+}

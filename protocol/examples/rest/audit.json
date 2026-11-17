@@ -1,0 +1,8 @@
+{
+  "id": "audit_example",
+  "kind": "perm",
+  "ts": "2026-10-17T08:00:00Z",
+  "rid": "r_example",
+  "result": "allow",
+  "by": "device"
+}

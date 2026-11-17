@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/assistant-chat-request.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "dev_id": {
+      "$ref": "assistant-data.json#/$defs/id"
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16384
+    },
+    "session_id": {
+      "$ref": "assistant-data.json#/$defs/id"
+    },
+    "file_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "assistant-data.json#/$defs/id"
+      },
+      "maxItems": 8,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "dev_id",
+    "text"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+services:
+  nuka-hub:
+    image: ghcr.io/<owner>/nuka-hub:0.1.0
+    ports:
+      - "8790:8790"
+    volumes:
+      - ./config:/config
+      - ./data:/data
+    restart: unless-stopped
+    environment:
+      NUKA_CONFIG: /config/config.toml
+      NUKA__HUB__DATA_DIR: '"/data"'

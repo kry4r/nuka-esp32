@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/ws-agent.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "allOf": [
+    {
+      "$ref": "envelope.json"
+    }
+  ],
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "hello"
+        },
+        "d": {
+          "$ref": "agent-data.json#/$defs/hello"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "welcome"
+        },
+        "d": {
+          "$ref": "agent-data.json#/$defs/welcome"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "host.sample"
+        },
+        "d": {
+          "$ref": "agent-data.json#/$defs/host.sample"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "media.state"
+        },
+        "d": {
+          "$ref": "agent-data.json#/$defs/media.state"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "media.cmd"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/media.cmd"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "ok"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/ok"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "err"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/err"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    }
+  ]
+}

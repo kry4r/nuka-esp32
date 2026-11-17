@@ -1,0 +1,26 @@
+{
+  "v": 1,
+  "t": "vm.servers",
+  "ts": 1792224000,
+  "d": {
+    "rev": 40,
+    "items": [
+      {
+        "id": "s_example",
+        "name": "server-example",
+        "online": true,
+        "src": "generic_json",
+        "cpu_pct": 12.0,
+        "mem_pct": 45.3,
+        "disk_pct": 71.0,
+        "load1": 0.42,
+        "net_txt": "↑0.3 ↓1.1 MB/s",
+        "uptime_txt": "12d",
+        "alerts": 1,
+        "latency_ms": 30,
+        "uptime_pct": 99.9
+      }
+    ],
+    "more": 1
+  }
+}

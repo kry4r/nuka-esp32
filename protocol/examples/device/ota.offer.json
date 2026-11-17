@@ -1,0 +1,13 @@
+{
+  "v": 1,
+  "t": "ota.offer",
+  "ts": 1792224000,
+  "d": {
+    "ver": "0.2.0",
+    "kind": "app",
+    "url": "/api/v1/ota/nuka-esp32-0.2.0.bin",
+    "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "size": 1843200,
+    "notes_txt": "Example release"
+  }
+}

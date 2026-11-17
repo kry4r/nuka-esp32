@@ -1,0 +1,30 @@
+{
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "color": {
+    "bg": "#000000",
+    "surface": "#10140C",
+    "surface_hi": "#1B2213",
+    "outline": "#2A341C",
+    "avo": "#A4C93C",
+    "avo_soft": "#C9DE7A",
+    "avo_deep": "#4E6B1E",
+    "pit": "#7A5230",
+    "text": "#EEF3E2",
+    "text_dim": "#8C9878",
+    "warn": "#F0B84A",
+    "danger": "#EF6A55",
+    "info": "#7FB8D6"
+  },
+  "radius": { "card": 28, "btn": 20, "chip": 999 },
+  "space": { "xs": 4, "s": 8, "m": 16, "l": 24, "xl": 32 },
+  "safe_inset": 24,
+  "font_size": {
+    "display": 112,
+    "h1": 56,
+    "h2": 40,
+    "title": 32,
+    "body": 28,
+    "caption": 22,
+    "min": 20
+  }
+}

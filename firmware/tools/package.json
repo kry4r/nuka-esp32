@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "name": "nuka-firmware-tools",
+  "version": "0.1.0",
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "lv_font_conv": "1.5.3"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "event": "PreToolUse",
+  "host": "<HOST_NAME>",
+  "payload": {
+    "session_id": "<SESSION_ID>"
+  }
+}

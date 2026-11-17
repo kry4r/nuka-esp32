@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/pair-confirm.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "dev_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]{1,32}$",
+      "not": {
+        "pattern": "[^a-z0-9_-]"
+      }
+    },
+    "code": {
+      "type": "string",
+      "pattern": "^[0-9]{6}$"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "dev_id",
+    "code",
+    "name"
+  ],
+  "additionalProperties": true
+}

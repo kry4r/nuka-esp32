@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/hook-response.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "hookSpecificOutput": {
+      "type": "object",
+      "properties": {
+        "hookEventName": {
+          "const": "PermissionRequest"
+        },
+        "decision": {
+          "type": "object",
+          "properties": {
+            "behavior": {
+              "enum": [
+                "allow",
+                "deny"
+              ]
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "behavior"
+          ],
+          "additionalProperties": true,
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "behavior": {
+                    "const": "deny"
+                  }
+                },
+                "required": [
+                  "behavior"
+                ]
+              },
+              "then": {
+                "required": [
+                  "message"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "hookEventName",
+        "decision"
+      ],
+      "additionalProperties": true
+    }
+  },
+  "required": [],
+  "additionalProperties": true
+}

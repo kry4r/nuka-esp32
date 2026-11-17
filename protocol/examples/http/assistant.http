@@ -1,0 +1,80 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# C2-03 HTTP shapes. Cookie / CSRF values are placeholders.
+# Remote management additionally requires verified Cloudflare Access at the edge.
+
+GET /api/v1/assistant/status HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+
+### New session and streaming reply (assistant-chat-request.min.json)
+POST /api/v1/assistant/chat HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+X-CSRF-Token: <YOUR_CSRF>
+Content-Type: application/json
+Accept: text/event-stream
+
+{"dev_id":"nuka_example","text":"你好"}
+
+### Page of stored messages
+GET /api/v1/assistant/history?dev_id=nuka_example&session_id=s_example&limit=50&before=m_example HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+
+### Delete the session, its tool lifecycle and sourced memories
+DELETE /api/v1/assistant/history?dev_id=nuka_example&session_id=s_example HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+X-CSRF-Token: <YOUR_CSRF>
+
+### Export response is assistant-message.export.jsonl, not a JSON array
+GET /api/v1/assistant/history/export?dev_id=nuka_example&session_id=s_example HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+
+### List memories
+GET /api/v1/assistant/memories?dev_id=nuka_example&limit=50 HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+
+### Request creation; 202 does not mean the memory has been stored
+POST /api/v1/assistant/memories HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+X-CSRF-Token: <YOUR_CSRF>
+Content-Type: application/json
+
+{"dev_id":"nuka_example","text":"偏好简短回答。","source_message_id":"m_example"}
+
+### Explicit admin deletion
+DELETE /api/v1/assistant/memories/mem_example?dev_id=nuka_example HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+X-CSRF-Token: <YOUR_CSRF>
+
+### List files
+GET /api/v1/assistant/files?dev_id=nuka_example&limit=50 HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+
+### Upload raw bytes; the following body is 13 bytes with LF
+POST /api/v1/assistant/files?dev_id=nuka_example HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+X-CSRF-Token: <YOUR_CSRF>
+Content-Type: application/octet-stream
+X-Filename: notes.txt
+Content-Length: 13
+
+example data
+
+### Download response requires attachment and nosniff headers
+GET /api/v1/assistant/files/f_example/download?dev_id=nuka_example HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+
+### Delete file metadata and stored bytes
+DELETE /api/v1/assistant/files/f_example?dev_id=nuka_example HTTP/1.1
+Host: hub.example.com
+Cookie: nuka_session=<YOUR_SESSION>
+X-CSRF-Token: <YOUR_CSRF>

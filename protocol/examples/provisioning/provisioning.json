@@ -1,0 +1,8 @@
+{
+  "ssid": "<SSID>",
+  "pass": "<PASSWORD>",
+  "hub": "wss://hub.example.com/ws/device",
+  "cf_origin": "https://hub.example.com",
+  "cf_client_id": "<CF_CLIENT_ID>",
+  "cf_client_secret": "<CF_CLIENT_SECRET>"
+}

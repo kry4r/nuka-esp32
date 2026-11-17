@@ -1,0 +1,63 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+cmake_minimum_required(VERSION 3.24)
+project(nuka_sim C)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+if(MSVC)
+    add_compile_options(/utf-8)
+endif()
+include(FetchContent)
+get_filename_component(NUKA_ROOT "${CMAKE_CURRENT_LIST_DIR}/../.." ABSOLUTE)
+set(LVGL_SOURCE_DIR "${NUKA_ROOT}/build/lvgl" CACHE PATH "Optional LVGL v9.6.0 checkout")
+set(SDL_SOURCE_DIR "${NUKA_ROOT}/build/SDL" CACHE PATH "Optional SDL release-2.32.10 checkout")
+set(CJSON_SOURCE_DIR "${NUKA_ROOT}/build/esp-idf/components/json/cJSON" CACHE PATH "Optional cJSON v1.7.19 checkout")
+set(MBEDTLS_SOURCE_DIR "${NUKA_ROOT}/build/esp-idf/components/mbedtls/mbedtls" CACHE PATH "Optional Mbed TLS v3.6.7 checkout")
+set(LV_BUILD_CONF_PATH "${CMAKE_CURRENT_LIST_DIR}/lv_conf.h" CACHE PATH "" FORCE)
+set(CONFIG_LV_BUILD_DEMOS OFF CACHE BOOL "" FORCE)
+set(CONFIG_LV_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(CONFIG_LV_USE_THORVG OFF CACHE BOOL "" FORCE)
+set(CONFIG_LV_USE_THORVG_INTERNAL OFF CACHE BOOL "" FORCE)
+set(SDL_SHARED OFF CACHE BOOL "" FORCE)
+set(SDL_STATIC ON CACHE BOOL "" FORCE)
+set(SDL_TEST OFF CACHE BOOL "" FORCE)
+set(SDL_AUDIO OFF CACHE BOOL "" FORCE)
+set(SDL2_DISABLE_UNINSTALL ON CACHE BOOL "" FORCE)
+set(ENABLE_CJSON_TEST OFF CACHE BOOL "" FORCE)
+set(ENABLE_CJSON_UNINSTALL OFF CACHE BOOL "" FORCE)
+set(ENABLE_PROGRAMS OFF CACHE BOOL "" FORCE)
+set(ENABLE_TESTING OFF CACHE BOOL "" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+foreach(dependency IN ITEMS lvgl SDL cJSON mbedtls)
+    string(TOUPPER "${dependency}" upper)
+    if(EXISTS "${${upper}_SOURCE_DIR}/CMakeLists.txt")
+        set(FETCHCONTENT_SOURCE_DIR_${upper} "${${upper}_SOURCE_DIR}")
+    endif()
+endforeach()
+FetchContent_Declare(lvgl GIT_REPOSITORY https://github.com/lvgl/lvgl.git GIT_TAG v9.6.0 GIT_SHALLOW TRUE)
+FetchContent_Declare(SDL GIT_REPOSITORY https://github.com/libsdl-org/SDL.git GIT_TAG release-2.32.10 GIT_SHALLOW TRUE)
+FetchContent_Declare(cJSON GIT_REPOSITORY https://github.com/DaveGamble/cJSON.git GIT_TAG v1.7.19 GIT_SHALLOW TRUE)
+FetchContent_Declare(mbedtls GIT_REPOSITORY https://github.com/Mbed-TLS/mbedtls.git GIT_TAG v3.6.7 GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(lvgl SDL cJSON mbedtls)
+file(GLOB NUKA_APPS CONFIGURE_DEPENDS "${NUKA_ROOT}/firmware/components/apps/*.c")
+file(GLOB NUKA_UI CONFIGURE_DEPENDS "${NUKA_ROOT}/firmware/components/ui/*.c" "${NUKA_ROOT}/firmware/components/ui/widgets/*.c")
+set(COMPONENTS "${NUKA_ROOT}/firmware/components")
+add_executable(nuka_sim main.c platform.c ${NUKA_APPS} ${NUKA_UI}
+    "${NUKA_ROOT}/firmware/main/app_registry.c"
+    "${COMPONENTS}/assets/i18n.c" "${COMPONENTS}/assets/nukapack.c"
+    "${COMPONENTS}/svc/vm_store.c" "${COMPONENTS}/svc/vm_topics.c"
+    "${COMPONENTS}/vault/vault.c"
+    "${COMPONENTS}/vault/vault_crypto.c" "${COMPONENTS}/vault/vault_json.c"
+    "${COMPONENTS}/vault/vault_otpauth.c")
+target_include_directories(nuka_sim PRIVATE platform . "${COMPONENTS}/apps" "${COMPONENTS}/ui"
+    "${COMPONENTS}/svc" "${COMPONENTS}/board" "${COMPONENTS}/assets" "${COMPONENTS}/vault" "${COMPONENTS}/gfx"
+    "${cjson_SOURCE_DIR}" "${sdl_SOURCE_DIR}/include")
+target_compile_definitions(nuka_sim PRIVATE ESP_PLATFORM NUKA_SIM SDL_MAIN_HANDLED
+    NUKA_SOURCE_ROOT="${NUKA_ROOT}" CONFIG_MBEDTLS_INTERNAL_MEM_ALLOC=1
+    LV_CONF_KCONFIG_EXTERNAL_INCLUDE="lv_conf.h")
+target_link_libraries(nuka_sim PRIVATE lvgl SDL2-static cjson mbedcrypto)
+if(MSVC)
+    target_compile_options(nuka_sim PRIVATE /FI"${CMAKE_CURRENT_LIST_DIR}/platform/host.h")
+else()
+    target_compile_options(nuka_sim PRIVATE -include "${CMAKE_CURRENT_LIST_DIR}/platform/host.h" -Wall -Wextra -Wno-unused-parameter)
+    target_link_libraries(nuka_sim PRIVATE m)
+endif()

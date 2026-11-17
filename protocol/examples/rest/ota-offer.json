@@ -1,0 +1,7 @@
+{
+  "ver": "0.2.0",
+  "kind": "app",
+  "dev_ids": [
+    "nuka_example"
+  ]
+}

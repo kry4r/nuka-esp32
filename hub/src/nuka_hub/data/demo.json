@@ -1,0 +1,272 @@
+{
+  "hosts": [
+    {
+      "id": "h_example",
+      "name": "host-example",
+      "os": "windows",
+      "online": true,
+      "last_seen": "2026-10-17T08:00:00Z",
+      "role": "hub",
+      "cpu": {
+        "pct": 23.5,
+        "per_core": [
+          20.0,
+          27.0
+        ],
+        "temp_c": 54,
+        "freq_mhz": 4700,
+        "power_w": 65
+      },
+      "gpus": [
+        {
+          "name": "Example GPU",
+          "pct": 12.0,
+          "temp_c": 41,
+          "mem_used_b": 1024,
+          "mem_total_b": 4096,
+          "power_w": 45,
+          "fan_pct": 30.0,
+          "clock_mhz": 1600
+        }
+      ],
+      "mem": {
+        "used_b": 1024,
+        "total_b": 2048,
+        "swap_used_b": 0,
+        "swap_total_b": 1024
+      },
+      "disks": [
+        {
+          "mount": "C:",
+          "used_b": 1024,
+          "total_b": 2048,
+          "read_bps": 512,
+          "write_bps": 128
+        }
+      ],
+      "net": {
+        "up_bps": 1024,
+        "down_bps": 2048
+      },
+      "fans": [
+        {
+          "label": "CPU",
+          "rpm": 1200
+        }
+      ],
+      "temps": [
+        {
+          "label": "CPU",
+          "c": 54
+        }
+      ],
+      "bat": {
+        "pct": 90.0,
+        "charging": true
+      },
+      "plugins": {
+        "nvml": "ok",
+        "lhm": "disabled"
+      }
+    }
+  ],
+  "servers": [
+    {
+      "id": "s_example",
+      "name": "server-example",
+      "src": "generic_json",
+      "src_name": "example",
+      "online": true,
+      "last_seen": "2026-10-17T08:00:00Z",
+      "cpu_pct": 12.0,
+      "mem_used_b": 1024,
+      "mem_total_b": 2048,
+      "disk_used_b": 1024,
+      "disk_total_b": 2048,
+      "load": [
+        0.4,
+        0.3,
+        0.2
+      ],
+      "net_up_bps": 1024,
+      "net_down_bps": 2048,
+      "uptime_s": 3600,
+      "latency_ms": 20,
+      "uptime_pct": 99.9,
+      "alerts": [
+        {
+          "rule": "example-rule",
+          "level": "warn",
+          "since": "2026-10-17T08:00:00Z"
+        }
+      ]
+    }
+  ],
+  "ai": {
+    "summary": {
+      "requests": 1234,
+      "tokens": 3200000,
+      "failures": 15
+    },
+    "accounts": [
+      {
+        "id": "a_example",
+        "provider_kind": "codex",
+        "label": "a***@example.com",
+        "plan": "plus",
+        "status": "cooldown",
+        "recover_at": "2026-10-17T08:00:00Z",
+        "windows": [
+          {
+            "kind": "other",
+            "label": "Example Window",
+            "used_pct": 42.0,
+            "reset_at": "2026-10-17T08:00:00Z",
+            "source": "snapshot",
+            "observed_at": "2026-10-17T08:00:00Z",
+            "stale": false
+          }
+        ],
+        "credits": {
+          "balance": 5.0,
+          "currency": "USD"
+        },
+        "today": {
+          "requests": 1234,
+          "tokens": 3200000,
+          "failures": 15
+        }
+      }
+    ],
+    "providers": [
+      {
+        "name": "example",
+        "type": "cpamp",
+        "health": "ok",
+        "last_ok": "2026-10-17T08:00:00Z",
+        "next_try": "2026-10-17T08:00:00Z",
+        "detail": "Example provider"
+      }
+    ]
+  },
+  "agents": {
+    "sessions": [
+      {
+        "sid": "c_example",
+        "source": "claude",
+        "host": "host-example",
+        "project": "example-project",
+        "state": "tool",
+        "tool": "Bash",
+        "since": "2026-10-17T08:00:00Z",
+        "last_message": "Example message"
+      }
+    ],
+    "pending": [
+      {
+        "rid": "r_example",
+        "sid": "c_example",
+        "src": "claude",
+        "host": "host-example",
+        "project": "example-project",
+        "tool": "Bash",
+        "summary": "Build example project",
+        "created": "2026-10-17T08:00:00Z",
+        "expires": "2026-10-17T08:01:00Z"
+      }
+    ]
+  },
+  "notify": [
+    {
+      "nid": "n_example",
+      "source": "alerts",
+      "level": "warn",
+      "title": "Example alert",
+      "body": "Example body",
+      "ts": "2026-10-17T08:00:00Z",
+      "dedupe_key": "example-alert",
+      "actions": [
+        {
+          "kind": "dismiss"
+        }
+      ],
+      "ttl_s": 86400
+    }
+  ],
+  "devices": [
+    {
+      "dev_id": "nuka_example",
+      "name": "device-example",
+      "fw": "0.1.0",
+      "online": true,
+      "last_seen": "2026-10-17T08:00:00Z",
+      "ip": "192.0.2.10",
+      "state": {
+        "screen": true,
+        "dnd": false,
+        "card": "ai",
+        "bat": {
+          "pct": 82.0,
+          "mv": 3987,
+          "chg": "charging",
+          "src": "usb",
+          "eta_min": 95
+        },
+        "rssi": -58,
+        "heap_int": 143360,
+        "heap_int_min": 98304,
+        "up_s": 3600,
+        "low_power": false
+      }
+    }
+  ],
+  "media": [
+    {
+      "src_id": "m_example",
+      "host": "host-example",
+      "app": "Example Player",
+      "title": "Example Song",
+      "artist": "Example Artist",
+      "album": "Example Album",
+      "state": "playing",
+      "pos_s": 61,
+      "dur_s": 215,
+      "at": "2026-10-17T08:00:00Z",
+      "cover": "/api/v1/media/cover/7f3a9c.jpg",
+      "can": {
+        "toggle": true,
+        "next": true,
+        "prev": true
+      }
+    }
+  ],
+  "weather": {
+    "loc_txt": "Example City",
+    "updated": "2026-10-17T08:00:00Z",
+    "now": {
+      "temp_c": 18.5,
+      "feels_c": 17.0,
+      "hum_pct": 60.0,
+      "wind_txt": "NE 3 级",
+      "icon": "partly_cloudy",
+      "desc_txt": "多云"
+    },
+    "days": [
+      {
+        "date": "2026-10-18",
+        "hi_c": 22,
+        "lo_c": 13,
+        "icon": "rain"
+      }
+    ]
+  },
+  "plugins": [
+    {
+      "kind": "collector",
+      "name": "nvml",
+      "health": "ok",
+      "detail": "Example plugin",
+      "doc": "guides/04-hardware-sensors#nvidia"
+    }
+  ]
+}

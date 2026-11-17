@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": "m_example",
+      "dev_id": "nuka_example",
+      "session_id": "s_example",
+      "role": "assistant",
+      "text": "你好。",
+      "created_at": "2026-10-24T08:00:00Z",
+      "tool_call_id": "tc_example",
+      "tool_name": "nuka.status",
+      "tool_state": "completed",
+      "file_ids": [
+        "f_example"
+      ]
+    }
+  ],
+  "next_before": "m_earlier"
+}

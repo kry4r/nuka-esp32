@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#pragma once
+#include "esp_event.h"
+ESP_EVENT_DECLARE_BASE(NUKA_EVENTS);
+enum {
+    NUKA_VM_CHANGED, NUKA_KEY, NUKA_SCREEN_CHANGED, NUKA_BATTERY_CHANGED,
+    NUKA_HUB_CONNECTED, NUKA_HUB_DISCONNECTED, NUKA_PERMISSION,
+    NUKA_NOTIFICATION, NUKA_GESTURE, NUKA_OTA_OFFER, NUKA_CONFIG_CHANGED,
+    NUKA_USB_PAIR, NUKA_TIME_CHANGED, NUKA_USB_VAULT, NUKA_PROVISIONING_READY,
+    NUKA_VOICE_PREPARE, NUKA_VOICE_START, NUKA_VOICE_END, NUKA_VOICE_CANCEL, NUKA_VOICE_STOP
+};
+extern esp_event_loop_handle_t nuka_bus;
+esp_err_t nuka_bus_init(void);
+void nuka_post(int32_t event, const void *data, size_t size);

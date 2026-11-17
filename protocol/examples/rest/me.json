@@ -1,0 +1,12 @@
+{
+  "zone": "lan",
+  "csrf": "<CSRF_TOKEN>",
+  "features": {
+    "ai": true,
+    "servers": true,
+    "agents": true,
+    "media": true,
+    "weather": true
+  },
+  "lang": "zh-CN"
+}

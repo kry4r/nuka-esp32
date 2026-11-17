@@ -1,0 +1,22 @@
+{
+  "v": 1,
+  "t": "vm.agents",
+  "ts": 1792224000,
+  "d": {
+    "rev": 77,
+    "pending": 1,
+    "sessions": [
+      {
+        "sid": "c_example",
+        "src": "claude",
+        "host": "host-example",
+        "project": "example-project",
+        "state": "tool",
+        "tool": "Bash",
+        "since": 1792223990,
+        "msg": "Building example project"
+      }
+    ],
+    "more": 2
+  }
+}

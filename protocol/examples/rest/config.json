@@ -1,0 +1,14 @@
+{
+  "hub": {
+    "name": "hub-example",
+    "port": 8790
+  },
+  "ai": {
+    "provider": [
+      {
+        "name": "example",
+        "key_secret": "ai.example"
+      }
+    ]
+  }
+}

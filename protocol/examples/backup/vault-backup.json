@@ -1,0 +1,21 @@
+{
+  "ver": 1,
+  "entries": [
+    {
+      "type": "totp",
+      "name": "Example TOTP",
+      "secret_b32": "MFRGGZA=",
+      "digits": 6,
+      "period": 30,
+      "algo": "SHA1"
+    },
+    {
+      "type": "pass",
+      "name": "Example password",
+      "user": "<USER>",
+      "pass": "<PASSWORD>",
+      "url": "https://vault.example.com",
+      "note": "Example note"
+    }
+  ]
+}

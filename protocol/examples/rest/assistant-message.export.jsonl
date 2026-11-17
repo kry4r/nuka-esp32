@@ -1,0 +1,4 @@
+{"id":"m_example","dev_id":"nuka_example","session_id":"s_example","role":"user","text":"请记住我偏好简短回答。","created_at":"2026-10-24T08:00:00Z"}
+{"id":"m_request","dev_id":"nuka_example","session_id":"s_example","role":"assistant","text":"{\"text\":\"偏好简短回答。\"}","created_at":"2026-10-24T08:00:00Z","tool_call_id":"tc_example","tool_name":"memory.write","tool_state":"requested"}
+{"id":"m_result","dev_id":"nuka_example","session_id":"s_example","role":"tool","text":"设备已允许，记忆已保存。","created_at":"2026-10-24T08:00:00Z","tool_call_id":"tc_example","tool_name":"memory.write","tool_state":"completed"}
+{"id":"m_answer","dev_id":"nuka_example","session_id":"s_example","role":"assistant","text":"记住了。","created_at":"2026-10-24T08:00:00Z"}

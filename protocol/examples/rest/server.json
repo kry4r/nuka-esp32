@@ -1,0 +1,32 @@
+{
+  "id": "s_example",
+  "name": "server-example",
+  "src": "generic_json",
+  "src_name": "example",
+  "online": true,
+  "last_seen": "2026-10-17T08:00:00Z",
+  "cpu_pct": 12.0,
+  "mem_used_b": 1024,
+  "mem_pct": 50.0,
+  "mem_total_b": 2048,
+  "disk_used_b": 1024,
+  "disk_pct": 50.0,
+  "disk_total_b": 2048,
+  "load": [
+    0.4,
+    0.3,
+    0.2
+  ],
+  "net_up_bps": 1024,
+  "net_down_bps": 2048,
+  "uptime_s": 3600,
+  "latency_ms": 20,
+  "uptime_pct": 99.9,
+  "alerts": [
+    {
+      "rule": "example-rule",
+      "level": "warn",
+      "since": "2026-10-17T08:00:00Z"
+    }
+  ]
+}

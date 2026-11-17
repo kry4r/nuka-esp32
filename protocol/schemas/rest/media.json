@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/media.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "src_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]{1,32}$",
+      "not": {
+        "pattern": "[^a-z0-9_-]"
+      }
+    },
+    "host": {
+      "type": "string"
+    },
+    "app": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "artist": {
+      "type": "string"
+    },
+    "album": {
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "playing",
+        "paused",
+        "stopped"
+      ]
+    },
+    "pos_s": {
+      "type": "number",
+      "minimum": 0
+    },
+    "dur_s": {
+      "type": "number",
+      "minimum": 0
+    },
+    "at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "cover": {
+      "type": "string",
+      "pattern": "^/api/v1/media/cover/[a-f0-9]+\\.jpg$"
+    },
+    "can": {
+      "$ref": "../device-data.json#/$defs/media_can"
+    }
+  },
+  "required": [
+    "src_id",
+    "host",
+    "app",
+    "state",
+    "can"
+  ],
+  "additionalProperties": true,
+  "dependentRequired": {
+    "pos_s": [
+      "at"
+    ]
+  }
+}

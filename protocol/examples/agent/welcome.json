@@ -1,0 +1,14 @@
+{
+  "v": 1,
+  "t": "welcome",
+  "ts": 1792224000,
+  "d": {
+    "hub_id": "hub_example",
+    "intervals": {
+      "host_fast": 1,
+      "host_slow": 2,
+      "disk": 60
+    }
+  },
+  "id": 2
+}

@@ -1,0 +1,72 @@
+{
+  "v": 1,
+  "t": "host.sample",
+  "ts": 1792224000,
+  "d": {
+    "name": "host-example",
+    "os": "windows",
+    "online": true,
+    "last_seen": "2026-10-17T08:00:00Z",
+    "cpu": {
+      "pct": 23.5,
+      "per_core": [
+        20.0,
+        27.0
+      ],
+      "temp_c": 54,
+      "freq_mhz": 4700,
+      "power_w": 65
+    },
+    "gpus": [
+      {
+        "name": "Example GPU",
+        "pct": 12.0,
+        "temp_c": 41,
+        "mem_used_b": 1024,
+        "mem_total_b": 4096,
+        "power_w": 45,
+        "fan_pct": 30.0,
+        "clock_mhz": 1600
+      }
+    ],
+    "mem": {
+      "used_b": 1024,
+      "total_b": 2048,
+      "swap_used_b": 0,
+      "swap_total_b": 1024
+    },
+    "disks": [
+      {
+        "mount": "C:",
+        "used_b": 1024,
+        "total_b": 2048,
+        "read_bps": 512,
+        "write_bps": 128
+      }
+    ],
+    "net": {
+      "up_bps": 1024,
+      "down_bps": 2048
+    },
+    "fans": [
+      {
+        "label": "CPU",
+        "rpm": 1200
+      }
+    ],
+    "temps": [
+      {
+        "label": "CPU",
+        "c": 54
+      }
+    ],
+    "bat": {
+      "pct": 90.0,
+      "charging": true
+    },
+    "plugins": {
+      "nvml": "ok",
+      "lhm": "disabled"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "error": {
+    "code": "bad_request",
+    "message": "Invalid configuration",
+    "details": [
+      {
+        "line": 12,
+        "msg": "Example validation error"
+      }
+    ]
+  }
+}

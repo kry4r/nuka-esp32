@@ -1,0 +1,20 @@
+{
+  "loc_txt": "Example City",
+  "updated": "2026-10-17T08:00:00Z",
+  "now": {
+    "temp_c": 18.5,
+    "feels_c": 17.0,
+    "hum_pct": 60.0,
+    "wind_txt": "NE 3 级",
+    "icon": "partly_cloudy",
+    "desc_txt": "多云"
+  },
+  "days": [
+    {
+      "date": "2026-10-18",
+      "hi_c": 22,
+      "lo_c": 13,
+      "icon": "rain"
+    }
+  ]
+}

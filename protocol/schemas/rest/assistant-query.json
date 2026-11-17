@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/assistant-query.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "dev_id": {
+      "$ref": "assistant-data.json#/$defs/id"
+    },
+    "session_id": {
+      "$ref": "assistant-data.json#/$defs/id"
+    },
+    "q": {
+      "type": "string",
+      "maxLength": 2000
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 50
+    },
+    "before": {
+      "$ref": "assistant-data.json#/$defs/id"
+    }
+  },
+  "required": [
+    "dev_id"
+  ],
+  "additionalProperties": false
+}

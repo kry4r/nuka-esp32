@@ -1,0 +1,14 @@
+{
+  "v": 1,
+  "t": "sub",
+  "ts": 1792224000,
+  "d": {
+    "topics": [
+      "hosts",
+      "ai",
+      "agents",
+      "notify",
+      "pet"
+    ]
+  }
+}

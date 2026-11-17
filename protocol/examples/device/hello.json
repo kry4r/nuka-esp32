@@ -1,0 +1,37 @@
+{
+  "v": 1,
+  "t": "hello",
+  "ts": 0,
+  "d": {
+    "dev_id": "nuka_example",
+    "fw": "0.1.0",
+    "nukapack": "0.1.0",
+    "proto": 1,
+    "lang": "zh-CN",
+    "screen": true,
+    "caps": [
+      "imu",
+      "hid",
+      "vault",
+      "audio"
+    ],
+    "topics": [
+      "hosts",
+      "servers",
+      "ai",
+      "agents",
+      "notify",
+      "media",
+      "weather",
+      "pet"
+    ],
+    "bat": {
+      "pct": 82.0,
+      "mv": 3987,
+      "chg": "charging",
+      "src": "usb",
+      "eta_min": 95
+    }
+  },
+  "id": 1
+}

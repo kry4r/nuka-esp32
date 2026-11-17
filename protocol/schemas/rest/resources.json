@@ -1,0 +1,1091 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/resources.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "$defs": {
+    "cpu": {
+      "type": "object",
+      "properties": {
+        "pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "multipleOf": 0.1
+        },
+        "per_core": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "multipleOf": 0.1
+          }
+        },
+        "temp_c": {
+          "type": "number"
+        },
+        "freq_mhz": {
+          "type": "number",
+          "minimum": 0
+        },
+        "power_w": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "gpu": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "multipleOf": 0.1
+        },
+        "temp_c": {
+          "type": "number"
+        },
+        "mem_used_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mem_total_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "power_w": {
+          "type": "number",
+          "minimum": 0
+        },
+        "fan_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "multipleOf": 0.1
+        },
+        "clock_mhz": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": true
+    },
+    "mem": {
+      "type": "object",
+      "properties": {
+        "used_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "swap_used_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "swap_total_b": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "disk": {
+      "type": "object",
+      "properties": {
+        "mount": {
+          "type": "string"
+        },
+        "used_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "read_bps": {
+          "type": "number",
+          "minimum": 0
+        },
+        "write_bps": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "mount"
+      ],
+      "additionalProperties": true
+    },
+    "net": {
+      "type": "object",
+      "properties": {
+        "up_bps": {
+          "type": "number",
+          "minimum": 0
+        },
+        "down_bps": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [],
+      "additionalProperties": true
+    },
+    "fan": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "rpm": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "label",
+        "rpm"
+      ],
+      "additionalProperties": true
+    },
+    "temp": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "c": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "label",
+        "c"
+      ],
+      "additionalProperties": true
+    },
+    "battery": {
+      "type": "object",
+      "properties": {
+        "pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "multipleOf": 0.1
+        },
+        "charging": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "pct",
+        "charging"
+      ],
+      "additionalProperties": true
+    },
+    "host": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "online": {
+          "type": "boolean"
+        },
+        "last_seen": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "role": {
+          "enum": [
+            "hub",
+            "agent"
+          ]
+        },
+        "cpu": {
+          "$ref": "resources.json#/$defs/cpu"
+        },
+        "gpus": {
+          "type": "array",
+          "items": {
+            "$ref": "resources.json#/$defs/gpu"
+          }
+        },
+        "mem": {
+          "$ref": "resources.json#/$defs/mem"
+        },
+        "disks": {
+          "type": "array",
+          "items": {
+            "$ref": "resources.json#/$defs/disk"
+          }
+        },
+        "net": {
+          "$ref": "resources.json#/$defs/net"
+        },
+        "fans": {
+          "type": "array",
+          "items": {
+            "$ref": "resources.json#/$defs/fan"
+          }
+        },
+        "temps": {
+          "type": "array",
+          "items": {
+            "$ref": "resources.json#/$defs/temp"
+          }
+        },
+        "bat": {
+          "$ref": "resources.json#/$defs/battery"
+        },
+        "plugins": {
+          "type": "object",
+          "additionalProperties": {
+            "enum": [
+              "ok",
+              "degraded",
+              "error",
+              "disabled"
+            ]
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "online",
+        "role"
+      ],
+      "additionalProperties": true
+    },
+    "server_alert": {
+      "type": "object",
+      "properties": {
+        "rule": {
+          "type": "string"
+        },
+        "level": {
+          "enum": [
+            "info",
+            "warn",
+            "critical"
+          ]
+        },
+        "since": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        }
+      },
+      "required": [
+        "rule",
+        "level",
+        "since"
+      ],
+      "additionalProperties": true
+    },
+    "server": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "src": {
+          "type": "string"
+        },
+        "src_name": {
+          "type": "string"
+        },
+        "online": {
+          "type": "boolean"
+        },
+        "last_seen": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "cpu_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "multipleOf": 0.1
+        },
+        "mem_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "multipleOf": 0.1
+        },
+        "mem_used_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "mem_total_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "disk_used_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "disk_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "multipleOf": 0.1
+        },
+        "disk_total_b": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "load": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "maxItems": 3,
+          "minItems": 3
+        },
+        "net_up_bps": {
+          "type": "number",
+          "minimum": 0
+        },
+        "net_down_bps": {
+          "type": "number",
+          "minimum": 0
+        },
+        "uptime_s": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "latency_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "uptime_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "multipleOf": 0.1
+        },
+        "alerts": {
+          "type": "array",
+          "items": {
+            "$ref": "resources.json#/$defs/server_alert"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "src",
+        "src_name",
+        "online",
+        "alerts"
+      ],
+      "additionalProperties": true
+    },
+    "quota_window": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "5h",
+            "daily",
+            "weekly",
+            "monthly",
+            "other"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "used_pct": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "multipleOf": 0.1
+        },
+        "reset_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "source": {
+          "enum": [
+            "passive",
+            "snapshot",
+            "active"
+          ]
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "stale": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "used_pct",
+        "source",
+        "observed_at",
+        "stale"
+      ],
+      "additionalProperties": true,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "other"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "label"
+            ]
+          }
+        }
+      ]
+    },
+    "credits": {
+      "type": "object",
+      "properties": {
+        "balance": {
+          "type": "number"
+        },
+        "currency": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "balance",
+        "currency"
+      ],
+      "additionalProperties": true
+    },
+    "usage_today": {
+      "type": "object",
+      "properties": {
+        "requests": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "failures": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "requests",
+        "tokens",
+        "failures"
+      ],
+      "additionalProperties": true
+    },
+    "ai_account": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "provider_kind": {
+          "enum": [
+            "codex",
+            "claude",
+            "antigravity",
+            "kimi",
+            "other"
+          ]
+        },
+        "label": {
+          "type": "string"
+        },
+        "plan": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "cooldown",
+            "exhausted",
+            "reauth",
+            "disabled",
+            "unknown"
+          ]
+        },
+        "recover_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "windows": {
+          "type": "array",
+          "items": {
+            "$ref": "resources.json#/$defs/quota_window"
+          }
+        },
+        "credits": {
+          "$ref": "resources.json#/$defs/credits"
+        },
+        "today": {
+          "$ref": "resources.json#/$defs/usage_today"
+        }
+      },
+      "required": [
+        "id",
+        "provider_kind",
+        "label",
+        "status",
+        "windows"
+      ],
+      "additionalProperties": true
+    },
+    "provider_health": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "cpa",
+            "cpamp"
+          ]
+        },
+        "health": {
+          "enum": [
+            "ok",
+            "degraded",
+            "auth_failed",
+            "backoff",
+            "disabled"
+          ]
+        },
+        "last_ok": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "next_try": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "detail": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "health"
+      ],
+      "additionalProperties": true
+    },
+    "agent_session": {
+      "type": "object",
+      "properties": {
+        "sid": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "source": {
+          "enum": [
+            "claude",
+            "codex",
+            "gemini"
+          ]
+        },
+        "host": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "idle",
+            "thinking",
+            "tool",
+            "waiting_permission",
+            "done",
+            "error"
+          ]
+        },
+        "tool": {
+          "type": "string"
+        },
+        "since": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "last_message": {
+          "type": "string",
+          "maxLength": 140
+        }
+      },
+      "required": [
+        "sid",
+        "source",
+        "host",
+        "state",
+        "since"
+      ],
+      "additionalProperties": true
+    },
+    "perm_request": {
+      "type": "object",
+      "properties": {
+        "rid": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "sid": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "src": {
+          "enum": [
+            "claude",
+            "codex",
+            "gemini"
+          ]
+        },
+        "host": {
+          "type": "string"
+        },
+        "project": {
+          "type": "string"
+        },
+        "tool": {
+          "type": "string"
+        },
+        "summary": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "expires": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        }
+      },
+      "required": [
+        "rid",
+        "sid",
+        "src",
+        "host",
+        "tool",
+        "summary",
+        "created",
+        "expires"
+      ],
+      "additionalProperties": true
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "dismiss"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": true
+    },
+    "notification": {
+      "type": "object",
+      "properties": {
+        "nid": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "source": {
+          "type": "string"
+        },
+        "level": {
+          "enum": [
+            "info",
+            "warn",
+            "critical"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 120
+        },
+        "body": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "ts": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "dedupe_key": {
+          "type": "string"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "resources.json#/$defs/action"
+          }
+        },
+        "ttl_s": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "nid",
+        "source",
+        "level",
+        "title",
+        "ts",
+        "actions",
+        "ttl_s"
+      ],
+      "additionalProperties": true
+    },
+    "device": {
+      "type": "object",
+      "properties": {
+        "dev_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "fw": {
+          "type": "string"
+        },
+        "online": {
+          "type": "boolean"
+        },
+        "last_seen": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "ip": {
+          "type": "string",
+          "anyOf": [
+            {
+              "format": "ipv4"
+            },
+            {
+              "format": "ipv6"
+            }
+          ]
+        },
+        "state": {
+          "$ref": "../device-data.json#/$defs/state"
+        }
+      },
+      "required": [
+        "dev_id",
+        "name",
+        "fw",
+        "online"
+      ],
+      "additionalProperties": true
+    },
+    "plugin": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "enum": [
+            "collector",
+            "server",
+            "ai",
+            "media",
+            "weather"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "health": {
+          "enum": [
+            "ok",
+            "degraded",
+            "error",
+            "disabled"
+          ]
+        },
+        "detail": {
+          "type": "string"
+        },
+        "doc": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "name",
+        "health",
+        "doc"
+      ],
+      "additionalProperties": true
+    },
+    "token": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "admin",
+            "device",
+            "agent",
+            "hook",
+            "notify"
+          ]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "last_used": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "token": {
+          "not": {}
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "scope",
+        "created"
+      ],
+      "additionalProperties": true
+    },
+    "audit": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "kind": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "rid": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "result": {
+          "type": "string"
+        },
+        "by": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "ts"
+      ],
+      "additionalProperties": true
+    },
+    "pending_pair": {
+      "type": "object",
+      "properties": {
+        "dev_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "fw": {
+          "type": "string"
+        },
+        "expires": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        }
+      },
+      "required": [
+        "dev_id",
+        "fw",
+        "expires"
+      ],
+      "additionalProperties": true
+    },
+    "ota_manifest": {
+      "type": "object",
+      "properties": {
+        "ver": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "app",
+            "assets"
+          ]
+        },
+        "file": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "notes_txt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "ver",
+        "kind",
+        "file",
+        "sha256",
+        "size"
+      ],
+      "additionalProperties": true,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "assets"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "size": {
+                "maximum": 3145728
+              }
+            }
+          }
+        }
+      ]
+    },
+    "secret": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "env",
+            "keyring",
+            "file"
+          ]
+        },
+        "value": {
+          "not": {}
+        }
+      },
+      "required": [
+        "name",
+        "source"
+      ],
+      "additionalProperties": true
+    }
+  }
+}

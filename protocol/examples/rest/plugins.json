@@ -1,0 +1,11 @@
+{
+  "items": [
+    {
+      "kind": "collector",
+      "name": "nvml",
+      "health": "ok",
+      "detail": "Example plugin",
+      "doc": "guides/04-hardware-sensors#nvidia"
+    }
+  ]
+}

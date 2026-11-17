@@ -1,0 +1,548 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/ws-device.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "allOf": [
+    {
+      "$ref": "envelope.json"
+    },
+    {
+      "$ref": "common.json#/$defs/no_nul"
+    }
+  ],
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "hello"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/hello"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "welcome"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/welcome"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vm.hosts"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/vm.hosts"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vm.host_detail"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/vm.host_detail"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vm.servers"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/vm.servers"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vm.server_detail"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/vm.server_detail"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vm.ai"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/vm.ai"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vm.agents"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/vm.agents"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vm.notify"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/vm.notify"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vm.media"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/vm.media"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vm.weather"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/vm.weather"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vm.pet"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/vm.pet"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "time"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/time"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "sub"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/sub"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "state"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/state"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "sub.detail"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/sub.detail"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "perm.decide"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/perm.decide"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "media.cmd"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/media.cmd"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "ai.refresh"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/ai.refresh"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "notify.dismiss"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/notify.dismiss"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "pomo"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/pomo"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "macro.get"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/macro.get"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "ota.check"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/ota.check"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "ota.progress"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/ota.progress"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "ota.result"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/ota.result"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "perm.req"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/perm.req"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "perm.done"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/perm.done"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "notify.push"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/notify.push"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "ota.offer"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/ota.offer"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "macro.set"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/macro.set"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "cfg"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/cfg"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "pair.wait"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/pair.wait"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "pair.ok"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/pair.ok"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "ok"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/ok"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "err"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/err"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    }
+  ]
+}

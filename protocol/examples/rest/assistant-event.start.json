@@ -1,0 +1,7 @@
+{
+  "event": "start",
+  "data": {
+    "dev_id": "nuka_example",
+    "session_id": "s_example"
+  }
+}

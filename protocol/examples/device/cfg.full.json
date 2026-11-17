@@ -1,0 +1,19 @@
+{
+  "v": 1,
+  "t": "cfg",
+  "ts": 1792224000,
+  "d": {
+    "lang": "zh-CN",
+    "key3_long": {
+      "action": "macro",
+      "slot": 0
+    },
+    "key3_double_card": "buddy",
+    "key3_clock_style": true,
+    "t_dim": 20,
+    "t_off": 10,
+    "home_face": "assistant",
+    "volume": 50,
+    "assistant": true
+  }
+}

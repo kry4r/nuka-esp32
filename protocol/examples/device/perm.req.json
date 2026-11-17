@@ -1,0 +1,15 @@
+{
+  "v": 1,
+  "t": "perm.req",
+  "ts": 1792224000,
+  "d": {
+    "rid": "r_example",
+    "sid": "c_example",
+    "src": "claude",
+    "host": "host-example",
+    "project": "example-project",
+    "tool": "Bash",
+    "summary": "Build example project",
+    "expires_at": 1792224060
+  }
+}

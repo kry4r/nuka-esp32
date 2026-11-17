@@ -1,0 +1,12 @@
+{
+  "name": "nuka-assistant-pi",
+  "private": true,
+  "version": "0.1.0",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "engines": {"node": ">=22.19.0"},
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "1.4.0",
+    "@earendil-works/pi-ai": "1.4.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "rid": "r_example",
+  "sid": "c_example",
+  "src": "claude",
+  "host": "host-example",
+  "project": "example-project",
+  "tool": "Bash",
+  "summary": "Build example project",
+  "created": "2026-10-17T08:00:00Z",
+  "expires": "2026-10-17T08:01:00Z"
+}

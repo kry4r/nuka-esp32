@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/config.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "description": "CONFIG.md 的 JSON 视图，仅包含密钥名称引用，不包含任何密钥值；新增助手和远程管理字段在此校验，其他既有配置由 pydantic 完整校验。",
+  "properties": {
+    "assistant": {
+      "$ref": "../assistant-config.json"
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "remote_admin": {
+          "type": "boolean",
+          "default": false
+        },
+        "cf_access": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "team_domain": {
+              "type": "string"
+            },
+            "aud": {
+              "type": "string"
+            },
+            "require_for_ws": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "remote_admin": {
+                "const": true
+              }
+            },
+            "required": [
+              "remote_admin"
+            ]
+          },
+          "then": {
+            "required": [
+              "cf_access"
+            ],
+            "properties": {
+              "cf_access": {
+                "required": [
+                  "enabled",
+                  "team_domain",
+                  "aud"
+                ],
+                "properties": {
+                  "enabled": {
+                    "const": true
+                  },
+                  "team_domain": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "aud": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

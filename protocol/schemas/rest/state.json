@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/rest/state.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "type": "object",
+  "properties": {
+    "hosts": {
+      "type": "array",
+      "items": {
+        "$ref": "resources.json#/$defs/host"
+      }
+    },
+    "servers": {
+      "type": "array",
+      "items": {
+        "$ref": "resources.json#/$defs/server"
+      }
+    },
+    "ai": {
+      "$ref": "ai.json"
+    },
+    "agents": {
+      "$ref": "agents.json"
+    },
+    "notify": {
+      "type": "array",
+      "items": {
+        "$ref": "resources.json#/$defs/notification"
+      }
+    },
+    "devices": {
+      "type": "array",
+      "items": {
+        "$ref": "resources.json#/$defs/device"
+      }
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "$ref": "media.json"
+      }
+    },
+    "weather": {
+      "$ref": "weather.json"
+    },
+    "plugins": {
+      "type": "array",
+      "items": {
+        "$ref": "resources.json#/$defs/plugin"
+      }
+    }
+  },
+  "required": [
+    "hosts",
+    "servers",
+    "ai",
+    "agents",
+    "notify",
+    "devices",
+    "media",
+    "weather",
+    "plugins"
+  ],
+  "additionalProperties": true
+}

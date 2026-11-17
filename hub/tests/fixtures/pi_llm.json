@@ -1,0 +1,18 @@
+{
+  "steps": [
+    {
+      "delta": {
+        "tool_calls": [
+          {
+            "index": 0,
+            "id": "fake_call",
+            "type": "function",
+            "function": {"name": "read_status", "arguments": "{\"topic\":\"ai\"}"}
+          }
+        ]
+      },
+      "finish_reason": "tool_calls"
+    },
+    {"delta": {"content": "Fixture complete."}, "finish_reason": "stop"}
+  ]
+}

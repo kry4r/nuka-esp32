@@ -1,0 +1,10 @@
+{
+  "v": 1,
+  "t": "pair.ok",
+  "ts": 1792224000,
+  "d": {
+    "dev_token": "<YOUR_TOKEN>",
+    "hub_id": "hub_example",
+    "hub_name": "hub-example"
+  }
+}

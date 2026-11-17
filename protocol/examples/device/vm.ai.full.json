@@ -1,0 +1,53 @@
+{
+  "v": 1,
+  "t": "vm.ai",
+  "ts": 1792224000,
+  "d": {
+    "rev": 9,
+    "summary": {
+      "req_today": 1234,
+      "tok_today_txt": "3.2M",
+      "fail_pct": 1.2
+    },
+    "accounts": [
+      {
+        "id": "a_example",
+        "kind": "codex",
+        "label": "a***@example.com",
+        "plan": "plus",
+        "status": "cooldown",
+        "recover_at": 1792227600,
+        "windows": [
+          {
+            "kind": "5h",
+            "label": "5h",
+            "used_pct": 42.0,
+            "reset_at": 1792231200,
+            "src": "passive",
+            "stale": false
+          },
+          {
+            "kind": "weekly",
+            "label": "Week",
+            "used_pct": 18.5,
+            "reset_at": 1792828800,
+            "src": "snapshot",
+            "stale": false
+          },
+          {
+            "kind": "other",
+            "label": "Additional",
+            "used_pct": 5.0,
+            "reset_at": 1792231200,
+            "src": "active",
+            "stale": true
+          }
+        ],
+        "credits_txt": "$5.00",
+        "fresh_txt": "3 分钟前",
+        "breaker_open": true
+      }
+    ],
+    "more": 1
+  }
+}

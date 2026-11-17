@@ -1,0 +1,8 @@
+{
+  "dev_id": "nuka_example",
+  "session_id": "s_example",
+  "text": "请查看这个附件。",
+  "file_ids": [
+    "f_example"
+  ]
+}

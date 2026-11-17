@@ -1,0 +1,13 @@
+{
+  "v": 1,
+  "t": "ota.offer",
+  "ts": 1792224000,
+  "d": {
+    "ver": "0.2.0",
+    "kind": "assets",
+    "url": "/api/v1/ota/nuka-assets-0.2.0.bin",
+    "sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "size": 3145728,
+    "notes_txt": "Example resource package"
+  }
+}

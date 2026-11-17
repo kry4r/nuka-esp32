@@ -1,0 +1,1 @@
+{"t":"prov.set","d":{"wifi":[{"ssid":"<SSID>","pass":"<PASSWORD>"}],"hubs":["ws://192.0.2.10:8790/ws/device","wss://hub.example.com/ws/device"],"hub_id":"hub_example","hub_name":"hub-example","dev_token":"<YOUR_TOKEN>","code":"482913","cf_access":{"origin":"https://hub.example.com","client_id":"<CF_CLIENT_ID>","client_secret":"<CF_CLIENT_SECRET>"}},"id":2}

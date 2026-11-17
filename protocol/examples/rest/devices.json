@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "dev_id": "nuka_example",
+      "name": "device-example",
+      "fw": "0.1.0",
+      "online": true,
+      "last_seen": "2026-10-17T08:00:00Z",
+      "ip": "192.0.2.10",
+      "state": {
+        "screen": true,
+        "dnd": false,
+        "card": "ai",
+        "bat": {
+          "pct": 82.0,
+          "mv": 3987,
+          "chg": "charging",
+          "src": "usb",
+          "eta_min": 95
+        },
+        "rssi": -58,
+        "heap_int": 143360,
+        "heap_int_min": 98304,
+        "up_s": 3600,
+        "low_power": false
+      }
+    }
+  ]
+}

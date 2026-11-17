@@ -1,0 +1,911 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nuka.example.com/protocol/schemas/cdc.json",
+  "$comment": "SPDX-License-Identifier: AGPL-3.0-or-later",
+  "allOf": [
+    {
+      "$ref": "common.json#/$defs/no_nul"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "t": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "d": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "t",
+    "d"
+  ],
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "v"
+        ]
+      },
+      {
+        "required": [
+          "ts"
+        ]
+      }
+    ]
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "info"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/info"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "prov.set"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/prov.set"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vault.export"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/vault.export"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vault.chunk"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/vault.chunk"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vault.import.begin"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/vault.import.begin"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vault.import.chunk"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/vault.import.chunk"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vault.import.end"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/vault.import.end"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "vault.import.otpauth"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/vault.import.otpauth"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "diag.info"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/diag.info"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "diag.log"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/diag.log"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "diag.dump_log"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/diag.dump_log"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "sys.reboot"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/sys.reboot"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "sys.download"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/sys.download"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "log"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/log"
+        }
+      },
+      "required": [
+        "t",
+        "d"
+      ],
+      "not": {
+        "required": [
+          "id"
+        ]
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "log.chunk"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/log.chunk"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "ok"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/ok"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "err"
+        },
+        "d": {
+          "$ref": "cdc.json#/$defs/err"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "t": {
+          "const": "macro.set"
+        },
+        "d": {
+          "$ref": "device-data.json#/$defs/macro.set"
+        }
+      },
+      "required": [
+        "t",
+        "d",
+        "id"
+      ]
+    }
+  ],
+  "$defs": {
+    "info": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": true
+    },
+    "info_response": {
+      "type": "object",
+      "properties": {
+        "dev_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "fw": {
+          "type": "string"
+        },
+        "nukapack": {
+          "type": "string"
+        },
+        "proto": {
+          "const": 1
+        },
+        "paired": {
+          "type": "boolean"
+        },
+        "hub_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "mac": {
+          "type": "string",
+          "pattern": "^(?:[a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$"
+        },
+        "unlocked": {
+          "type": "boolean"
+        },
+        "usb_admin": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "dev_id",
+        "fw",
+        "nukapack",
+        "proto",
+        "paired",
+        "mac",
+        "unlocked",
+        "usb_admin"
+      ],
+      "additionalProperties": true,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "paired": {
+                "const": true
+              }
+            },
+            "required": [
+              "paired"
+            ]
+          },
+          "then": {
+            "required": [
+              "hub_id"
+            ]
+          }
+        }
+      ]
+    },
+    "wifi": {
+      "type": "object",
+      "properties": {
+        "ssid": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 32,
+          "format": "wifi-ssid"
+        },
+        "pass": {
+          "type": "string",
+          "maxLength": 63,
+          "format": "wifi-passphrase"
+        }
+      },
+      "required": [
+        "ssid",
+        "pass"
+      ],
+      "additionalProperties": true
+    },
+    "prov.set": {
+      "type": "object",
+      "properties": {
+        "wifi": {
+          "type": "array",
+          "items": {
+            "$ref": "cdc.json#/$defs/wifi"
+          },
+          "maxItems": 3,
+          "minItems": 1
+        },
+        "hubs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^wss?://",
+            "format": "uri",
+            "maxLength": 511
+          },
+          "minItems": 1
+        },
+        "hub_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "hub_name": {
+          "type": "string"
+        },
+        "dev_token": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[0-9]{6}$"
+        },
+        "cf_access": {
+          "$ref": "cf-access.json"
+        }
+      },
+      "required": [
+        "wifi",
+        "hubs",
+        "hub_id",
+        "hub_name",
+        "dev_token",
+        "code"
+      ],
+      "additionalProperties": true
+    },
+    "vault.export": {
+      "type": "object",
+      "properties": {
+        "key_b64": {
+          "$ref": "#/$defs/backup_key"
+        },
+        "salt_b64": {
+          "$ref": "#/$defs/backup_salt"
+        }
+      },
+      "required": [
+        "key_b64",
+        "salt_b64"
+      ],
+      "additionalProperties": true
+    },
+    "backup_key": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "pattern": "^[A-Za-z0-9+/]{42}[AEIMQUYcgkosw048]=$"
+    },
+    "backup_salt": {
+      "type": "string",
+      "contentEncoding": "base64",
+      "pattern": "^[A-Za-z0-9+/]{21}[AQgw]==$"
+    },
+    "vault.chunk": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "b64": {
+          "type": "string",
+          "contentEncoding": "base64",
+          "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+        },
+        "last": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "seq",
+        "b64",
+        "last"
+      ],
+      "additionalProperties": true
+    },
+    "vault.import.begin": {
+      "type": "object",
+      "properties": {
+        "key_b64": {
+          "$ref": "#/$defs/backup_key"
+        },
+        "size": {
+          "type": "integer",
+          "minimum": 55
+        }
+      },
+      "required": [
+        "key_b64",
+        "size"
+      ],
+      "additionalProperties": true
+    },
+    "vault.import.chunk": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "b64": {
+          "type": "string",
+          "contentEncoding": "base64",
+          "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+        }
+      },
+      "required": [
+        "seq",
+        "b64"
+      ],
+      "additionalProperties": true
+    },
+    "vault.import.end": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": true
+    },
+    "vault.import.otpauth": {
+      "type": "object",
+      "properties": {
+        "uris": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^otpauth://totp/",
+            "format": "uri"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "uris"
+      ],
+      "additionalProperties": true
+    },
+    "import_response": {
+      "type": "object",
+      "properties": {
+        "added": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "skipped": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "added",
+        "skipped"
+      ],
+      "additionalProperties": true
+    },
+    "task_stack": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "free_b": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "name",
+        "free_b"
+      ],
+      "additionalProperties": true
+    },
+    "diag_response": {
+      "type": "object",
+      "properties": {
+        "fw": {
+          "type": "string"
+        },
+        "up_s": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "heap_int": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "heap_int_min": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "psram_free": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "cdc.json#/$defs/task_stack"
+          }
+        },
+        "rssi": {
+          "type": "integer"
+        },
+        "reset_reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "fw",
+        "up_s",
+        "heap_int",
+        "heap_int_min",
+        "psram_free",
+        "tasks",
+        "reset_reason"
+      ],
+      "additionalProperties": true
+    },
+    "diag.info": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": true
+    },
+    "diag.dump_log": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": true
+    },
+    "sys.reboot": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": true
+    },
+    "sys.download": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": true
+    },
+    "diag.log": {
+      "type": "object",
+      "properties": {
+        "on": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "on"
+      ],
+      "additionalProperties": true
+    },
+    "log": {
+      "type": "object",
+      "properties": {
+        "lvl": {
+          "enum": [
+            "E",
+            "W",
+            "I",
+            "D",
+            "V"
+          ]
+        },
+        "tag": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "lvl",
+        "tag",
+        "msg",
+        "ts"
+      ],
+      "additionalProperties": true
+    },
+    "log.chunk": {
+      "type": "object",
+      "properties": {
+        "seq": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "b64": {
+          "type": "string",
+          "contentEncoding": "base64",
+          "pattern": "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+        },
+        "last": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "seq",
+        "b64",
+        "last"
+      ],
+      "additionalProperties": true
+    },
+    "err": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "enum": [
+            "bad_request",
+            "rate_limited",
+            "perm_gone",
+            "not_found",
+            "forbidden",
+            "internal",
+            "rejected",
+            "timeout"
+          ]
+        },
+        "msg": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "msg"
+      ],
+      "additionalProperties": true
+    },
+    "ok": {
+      "type": "object",
+      "properties": {
+        "dev_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "fw": {
+          "type": "string"
+        },
+        "nukapack": {
+          "type": "string"
+        },
+        "proto": {
+          "const": 1
+        },
+        "paired": {
+          "type": "boolean"
+        },
+        "hub_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_-]{1,32}$",
+          "not": {
+            "pattern": "[^a-z0-9_-]"
+          }
+        },
+        "mac": {
+          "type": "string",
+          "pattern": "^(?:[a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$"
+        },
+        "unlocked": {
+          "type": "boolean"
+        },
+        "usb_admin": {
+          "type": "boolean"
+        },
+        "up_s": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "heap_int": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "heap_int_min": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "psram_free": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "cdc.json#/$defs/task_stack"
+          }
+        },
+        "rssi": {
+          "type": "integer"
+        },
+        "reset_reason": {
+          "type": "string"
+        },
+        "added": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "skipped": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [],
+      "additionalProperties": true,
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "dev_id"
+            ]
+          },
+          "then": {
+            "$ref": "cdc.json#/$defs/info_response"
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "psram_free"
+            ]
+          },
+          "then": {
+            "$ref": "cdc.json#/$defs/diag_response"
+          }
+        },
+        {
+          "if": {
+            "anyOf": [
+              {
+                "required": [
+                  "added"
+                ]
+              },
+              {
+                "required": [
+                  "skipped"
+                ]
+              }
+            ]
+          },
+          "then": {
+            "$ref": "cdc.json#/$defs/import_response"
+          }
+        }
+      ]
+    }
+  }
+}

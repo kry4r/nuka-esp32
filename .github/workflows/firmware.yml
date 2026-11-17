@@ -1,0 +1,46 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+name: firmware
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+
+jobs:
+  project:
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.detect.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: detect
+        shell: bash
+        run: |
+          if [[ -f firmware/CMakeLists.txt ]]; then
+            echo 'ready=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'ready=false' >> "$GITHUB_OUTPUT"
+            echo 'FW-00 pending: ESP-IDF project has not been created.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+  build:
+    needs: project
+    if: needs.project.outputs.ready == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - idf: release-v5.5
+            experimental: false
+          - idf: release-v6.0
+            experimental: true
+    continue-on-error: ${{ matrix.experimental }}
+    container: espressif/idf:${{ matrix.idf }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build nuka-esp32
+        shell: bash
+        working-directory: firmware
+        run: |
+          . "$IDF_PATH/export.sh"
+          idf.py set-target esp32s3
+          idf.py build
